@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/style.css">
+
+    </style>
     <title>Weather to plan your day!</title>
 </head>
+
 <body>
     <h1>Weather Dashboard</h1>
     <div class="container">
@@ -15,13 +20,60 @@
         </div>
         <div class="weather-info">
             <div class="current-weather">
-                <h2>Columbus(9/29/2023)</h2>
-                <h4>Temperature: 71 F</h4>
-                <h4>Wind: 3 mph </h4>
-                <h4>Humidity: 74%</h4>
+                <div class="details">
+                    <h2>Columbus(9/30/2023)</h2>
+                    <h4>Temperature: 71 F</h4>
+                    <h4>Wind: 3 mph </h4>
+                    <h4>Humidity: 74%</h4>
+                </div>
+                <div class="icon"></div>
+                <img src="https://openweathermap.org/img/wn/10d@4x.png" alt="weather-icon">
+                <h4>Heavy Rain</h4>
             </div>
-            <img src="https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}" alt="">
         </div>
     </div>
+        <div class="days-forcast">
+            <h2>5 Day Forecast</h2>
+            <ul class="weather-cards">
+                <li class="dayCards">
+                    <h3>(9/30/2023)</h3>
+                    <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="weather-icon">
+                    <h4>Temp: 71 F</h4>
+                    <h4>Wind: 3 mph </h4>
+                    <h4>Humidity: 74%</h4>
+                </li>
+                <li class="dayCards">
+                    <h3>(9/30/2023)</h3>
+                    <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="weather-icon">
+                    <h4>Temp: 71 F</h4>
+                    <h4>Wind: 3 mph </h4>
+                    <h4>Humidity: 74%</h4>
+                </li>
+                <li class="dayCards">
+                    <h3>(9/30/2023)</h3>
+                    <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="weather-icon">
+                    <h4>Temp: 71 F</h4>
+                    <h4>Wind: 3 mph </h4>
+                    <h4>Humidity: 74%</h4>
+                </li>
+                <li class="dayCards">
+                    <h3>(9/30/2023)</h3>
+                    <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="weather-icon">
+                    <h4>Temp: 71 F</h4>
+                    <h4>Wind: 3 mph </h4>
+                    <h4>Humidity: 74%</h4>
+                </li>
+                <li class="dayCards">
+                    <h3>(9/30/2023)</h3>
+                    <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="weather-icon">
+                    <h4>Temp: 71 F</h4>
+                    <h4>Wind: 3 mph </h4>
+                    <h4>Humidity: 74%</h4>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </div>
 </body>
+
 </html>
