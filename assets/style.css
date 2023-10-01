@@ -91,8 +91,40 @@ h1 {
 
 .weather-cards .dayCards{
     list-style: none;
+    margin: 10px;
     color: aliceblue;
     padding: 15px 12px;
     border-radius: 5px;
     background-image: linear-gradient(rgb(69, 69, 231) , rgb(177, 197, 227))
+}
+
+@media (max-width: 1400px) {
+    .weather-info .current-weather{
+        padding: 20px;
+        flex-wrap: wrap;
+    }
+    .weather-cards{
+        flex-wrap:wrap;
+    }
+    .weather-cards .dayCards {
+        width: calc(100% / 4 -15px);
+    }
+}
+
+@media (max-width: 950px) {
+    .weather-input{
+        width: 450px;
+    }
+    .weather-cards .dayCards {
+        width: calc(100% / 2 -10px);
+    }
+}
+@media (max-width: 700px) {
+    .container{
+        flex-wrap: wrap;
+        padding: 15px
+    }
+    .weather-input{
+        width: 100%;
+    }
 }
