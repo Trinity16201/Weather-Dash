@@ -1,5 +1,5 @@
 //DONE-Connect to weather API
-//get city coordinates
+//DONE-get city coordinates
 //get data from weather API
 //add data to display on current weather card
 //get data for five day weather
