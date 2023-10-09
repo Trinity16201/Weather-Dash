@@ -8,9 +8,7 @@
 //add functionality to create a new search request based on buttons in search history
 
 const searchButton = document.querySelector(".search-btn");
-const apiKey = "f361262cbefd4ede6a09b3c7c951f6a2";
-const dailyApiKey = "35ca9dff30b5e843fe7e5722b54d4012"
-
+const apiKey = "96f143ae7a73207f215000acd1e7e113";
 
 function currentWeather(data) {
     var currentCity = data.city.name;
@@ -21,12 +19,9 @@ function currentWeather(data) {
 
 const getWeatherInfo = (name, lat, lon )=>{
     var apiURL=`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}}&units=imperial`;
-    //https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
     fetch(apiURL)
     .then((response) => response.json())
         .then((data) => {
-            console.log(data)
-            console.log(data.message)
             if (!data.length)
                 return alert("Error-could not find the location you are looking for.")
             console.log(data[0])
@@ -45,6 +40,7 @@ function getCoordinates() {
                 return alert("Error-try again")
             var { name, lat, lon } = data[0];
             getWeatherInfo(name, lat, lon)
+            console.log(data)
         }).catch(function (error) {
             console.log(error)
         });
