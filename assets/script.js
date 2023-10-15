@@ -1,8 +1,4 @@
-//DONE-Connect to weather API
-//DONE-get city coordinates
-//DONE-gget data from weather API
-//DONE-add data to display on current weather card
-//done -add icon to display
+
 //get data for five day weather
 //put city info search into local storage
 //pull city info into search history displayed on the page
@@ -11,37 +7,18 @@
 const searchButton = document.querySelector(".search-btn");
 const apiKey = "96f143ae7a73207f215000acd1e7e113";
 
-
-// /FIVE DAY
-// const fiveDayApi=`api.openweathermap.org/data/2.5/forecast?q=${cityInput}&appid=${apiKey}`;
-// const fiveDayInfo= (name, lat, lon)=>{
-//     var cityName = cityInput.value.trim();
-//     fiveDayApi=`https://api.openweathermap.org/data/2.5/forecast?q=${cityInput}&appid=${apiKey}`;
-// var apiURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
-
-// fetch(fiveDayApi)
-//     .then((response) => response.json())
-//     .then((data) => {
-//         console.log("get weather info", data)
-//         if (!data || !data.list)
-//             return alert("Error-could not find the location you are looking for.")
-//         currentWeather(data);
-//     }).catch(function (error) {
-//         console.log(error)
-//     });
-// }
 var fiveDayCard = document.getElementById("weather-cards");
-var fiveIconImg = document.getElementById("five-daily-icon");
+// var fiveIconImg = document.getElementById("five-daily-icon");
 function fiveDayWeather(data) {
     for (var i = 4; i < data.length; i += 6) {
         var fiveDate = data[i].dt_txt.split(" ")[0];
         var fiveTemp = data[i].main.temp;
         var fiveWind = data[i].wind.speed;
         var fiveHumidity = data[i].main.humidity;
-        var fiveDayDetails = data.list[i].weather[i].description;
+        var fiveDayDetails = data.list[0].weather[0].description;
 
-        var dateFiveEl = document.createElement("h3");
-        console.log("hello for real?")
+        var dateFiveEl = document.createElement("h2");
+        console.log("hello for real?")//not working
         dateFiveEl.textContent = fiveDate;
         fiveDayCard.append(dateFiveEl);
 
@@ -50,19 +27,19 @@ function fiveDayWeather(data) {
         fiveDayCard.append(fiveTempEl);
 
         var fiveWindEl = document.createElement("h3");
-        fiveWindEl.textContent = "Wind: " + (fiveWind);
+        fiveWindEl.textContent = "Wind: " + fiveWind;
         fiveDayCard.append(fiveWindEl);
 
         var fiveHumidityEl = document.createElement("h3");
-        fiveHumidityEl.textContent = "Humidity: " + (fiveHumidity);
+        fiveHumidityEl.textContent = "Humidity: " + fiveHumidity;
         fiveDayCard.append(fiveWindEl);
 
         var fiveDayEl = document.createElement("h3");
-        fiveDayEl.textContent = (fiveDayDetails);
+        fiveDayEl.textContent = fiveDayDetails;
         fiveDayCard.append(fiveDayEl);
 
-        var fiveDayIcon = `https://openweathermap.org/img/wn/${data[i].weather[i].icon}@2x.png`;
-        fiveIconImg.setAttribute("src", fiveDayIcon);
+        // var fiveDayIcon = `https://openweathermap.org/img/wn/${data[i].weather[i].icon}@2x.png`;
+        // fiveIconImg.setAttribute("src", fiveDayIcon);
     };
 }
 
@@ -105,7 +82,7 @@ function currentWeather(data) {
     var currentDayIcon = `https://openweathermap.org/img/wn/${data.list[0].weather[0].icon}@2x.png`;
     iconImg.setAttribute("src", currentDayIcon);
 
-    fiveDayWeather(data.list);
+    fiveDayWeather(data);
 }
 
 const getWeatherInfo = (name, lat, lon) => {
