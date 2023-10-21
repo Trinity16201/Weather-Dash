@@ -1,16 +1,46 @@
 const searchButton = document.querySelector(".search-btn");
 const apiKey = "96f143ae7a73207f215000acd1e7e113";
-const input =document.querySelector("input")
+var input = document.querySelector("input")
+var prevCity = [];
 
-function displayHistory(){
-    console.log(localStorage.getItem("history"))
-    var lastCity= localStorage.getItem("history");
-    var cityHistoryBtn = document.createElement('button')
-    cityHistoryBtn.textContent = lastCity;
-    document.getElementById("city-history").innerHTML="";
-    document.getElementById("city-history").append(cityHistoryBtn);
+function displayPrevCity() {
+
+    var readCityHistory = localStorage.getItem("history");
+    if (readCityHistory) {
+        readCityHistory = JSON.parse(readCityHistory)
+    } else {
+        readCityHistory = [];
+    }
+    return readCityHistory;
+    // console.log("history")
+    // var input=[];
+    // input.push({displayHistory}).val();
+
+}
+
+
+function displayHistory() {
+    for (var i = 1; i >= 0; i++) {
+
+        console.log(localStorage.getItem("history"))
+        var lastCity = localStorage.getItem("history");
+        var cityHistoryBtn = document.createElement('button')
+        cityHistoryBtn.textContent = prevCity[i];
+        document.getElementById("city-history").innerHTML = "";
+        document.getElementById("city-history").append(cityHistoryBtn);
+    }
+
+}
+
+function getSearchHistory() {
+    var storedHistory = localStorage.getItem("history");
+    if (storedHistory) {
+        prevCity = JSON.parse(storedHistory);
+    }
+    displayHistory();
 }
 displayHistory();
+
 
 
 
@@ -118,9 +148,11 @@ function getCoordinates() {
         });
 }
 
-function handleSearch(){
+function handleSearch() {
     getCoordinates();
-    localStorage.setItem("history", input.value);
+    prevCity.push(input.value)
+
+    localStorage.setItem("history", JSON.stringify(prevCity));
     displayHistory();
 
 }
