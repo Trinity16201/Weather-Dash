@@ -77,7 +77,7 @@ function fiveDayWeather(data) {
         fiveDayCard.append(fiveDayEl);
 
         var fiveDayIcon = `https://openweathermap.org/img/wn/${fiveDayWeather.weather[0].icon}@2x.png`;
-        iconImg.setAttribute("src", fiveDayIcon);
+        fiveIconImg.setAttribute("src", fiveDayIcon);
 
     };
 }
