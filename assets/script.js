@@ -3,34 +3,33 @@ const apiKey = "96f143ae7a73207f215000acd1e7e113";
 var input = document.querySelector("input")
 var prevCity = [];
 
-function displayPrevCity() {
+// function displayPrevCity() {
 
-    var readCityHistory = localStorage.getItem("history");
-    if (readCityHistory) {
-        readCityHistory = JSON.parse(readCityHistory)
-    } else {
-        readCityHistory = [];
-    }
-    return readCityHistory;
-    // console.log("history")
-    // var input=[];
-    // input.push({displayHistory}).val();
+//     var readCityHistory = localStorage.getItem("history");
+//     if (readCityHistory) {
+//         readCityHistory = JSON.parse(readCityHistory)
+//     } else {
+//         readCityHistory = [];
+//     }
+//     return readCityHistory;
+//     // console.log("history")
+//     // var input=[];
+//     // input.push({displayHistory}).val();
 
-}
-
+// }
 
 function displayHistory() {
-    for (var i = 1; i >= 0; i++) {
-
-        console.log(localStorage.getItem("history"))
-        var lastCity = localStorage.getItem("history");
-        var cityHistoryBtn = document.createElement('button')
-        cityHistoryBtn.textContent = prevCity[i];
-        document.getElementById("city-history").innerHTML = "";
-        document.getElementById("city-history").append(cityHistoryBtn);
+    document.getElementById("city-history").innerHTML = "";
+    // if (prevCity.length >=0){
+    console.log(prevCity)
+    // document.getElementById("city-history").innerHTML = "";
+        for(var i = prevCity.length-1; i >= 0; i--) {
+            var cityHistoryBtn = document.createElement('button')
+            console.log(prevCity[i])
+            cityHistoryBtn.textContent = prevCity[i-1];
+            document.getElementById("city-history").append(cityHistoryBtn);
+        }
     }
-
-}
 
 function getSearchHistory() {
     var storedHistory = localStorage.getItem("history");
@@ -39,7 +38,7 @@ function getSearchHistory() {
     }
     displayHistory();
 }
-displayHistory();
+// displayHistory();
 
 
 
@@ -48,11 +47,14 @@ var fiveDayCard = document.getElementById("weather-cards");
 var fiveIconImg = document.getElementById("five-icon");
 function fiveDayWeather(data) {
     for (var i = 4; i < data.list.length; i += 6) {
+        var fiveDayWeather = data.list[i];
         var fiveDate = data.list[i].dt_txt.split(" ")[0];
         var fiveTemp = data.list[i].main.temp;
         var fiveWind = data.list[i].wind.speed;
         var fiveHumidity = data.list[i].main.humidity;
         var fiveDayDetails = data.list[0].weather[0].description;
+        // var imgIcon = `https://openweathermap.org/img/wn/${currentDayWeather.weather[0].icon}@2x.png`;
+        // var iconSrc = "<img src=" + imgIcon + ">";
 
         var dateFiveEl = document.createElement("h3");
         dateFiveEl.textContent = fiveDate;
@@ -73,6 +75,10 @@ function fiveDayWeather(data) {
         var fiveDayEl = document.createElement("h4");
         fiveDayEl.textContent = fiveDayDetails;
         fiveDayCard.append(fiveDayEl);
+
+        var fiveDayIcon = `https://openweathermap.org/img/wn/${fiveDayWeather.weather[0].icon}@2x.png`;
+        iconImg.setAttribute("src", fiveDayIcon);
+
     };
 }
 
@@ -158,7 +164,7 @@ function handleSearch() {
 }
 
 searchButton.addEventListener("click", handleSearch);
-
+getSearchHistory();
 
 
 
