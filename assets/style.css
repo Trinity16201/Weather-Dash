@@ -63,28 +63,11 @@ h1 {
 .city-history {
     background-color: #008CBA;;
 }
-/* .current-weather {
-
-} */
-
-/* .current-weather h2 {
-    font-size: 20px;
-} */
-
-/* .current-weather h4 {
-    margin-top: 10px;
-    font-size: 15px;
-} */
 
 .weather-info .icon img {
     max-width: 110px;
     margin-top: -20px;
 }
-
-/* .current-weather .icon h4 {
-    margin-top: -10px;
-
-} */
 
 .days-forcast h2 {
     font-size: 25px;
