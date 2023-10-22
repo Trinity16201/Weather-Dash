@@ -3,20 +3,18 @@ const apiKey = "96f143ae7a73207f215000acd1e7e113";
 var input = document.querySelector("input")
 var prevCity = [];
 
-// function displayPrevCity() {
+// document.addEventListener("HistoryLoaded", () => {
+//     let localStorageList = localStorage.getItem("history");
+//     localStorageList = JSON.parse(localStorageList);
 
-//     var readCityHistory = localStorage.getItem("history");
-//     if (readCityHistory) {
-//         readCityHistory = JSON.parse(readCityHistory)
-//     } else {
-//         readCityHistory = [];
+//     if(localStorageList) {
+//         for (let i=0; i<localStorageList.length; i++) {
+//             var eachListItem = localStorageList[i];
+
+//             let
+//         }
 //     }
-//     return readCityHistory;
-//     // console.log("history")
-//     // var input=[];
-//     // input.push({displayHistory}).val();
-
-// }
+// })
 
 function displayHistory() {
     document.getElementById("city-history").innerHTML = "";
@@ -31,6 +29,8 @@ function displayHistory() {
         }
     }
 
+
+
 function getSearchHistory() {
     var storedHistory = localStorage.getItem("history");
     if (storedHistory) {
@@ -38,13 +38,12 @@ function getSearchHistory() {
     }
     displayHistory();
 }
-// displayHistory();
 
 
 
 
 var fiveDayCard = document.getElementById("weather-cards");
-var fiveIconImg = document.getElementById("five-icon");
+// var fiveIconImg = document.getElementById("five-icon");
 function fiveDayWeather(data) {
     for (var i = 4; i < data.list.length; i += 6) {
         var fiveDayWeather = data.list[i];
@@ -77,8 +76,17 @@ function fiveDayWeather(data) {
         fiveDayCard.append(fiveDayEl);
 
         var fiveDayIcon = `https://openweathermap.org/img/wn/${fiveDayWeather.weather[0].icon}@2x.png`;
-        iconImg.setAttribute("src", fiveDayIcon);
+        console.log(fiveDayIcon);
+        var iconImgElement = document.createElement("img");
+        iconImgElement.setAttribute("src", fiveDayIcon);
+        fiveDayCard.append(iconImgElement);
 
+        // var fiveDayIcon = `https://openweathermap.org/img/wn/${fiveDayWeather.weather[0].icon}@2x.png`;
+        // var fiveIconEl = document.createElement("img");
+        // fiveIconEl.setAttribute("src", fiveDayIcon);
+        // fiveDayCard.append(fiveIconEl);
+        // var fiveDayIcon = `https://openweathermap.org/img/wn/${fiveDayWeather.weather[0].icon}@2x.png`;
+        
     };
 }
 
